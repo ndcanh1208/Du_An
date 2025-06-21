@@ -1,0 +1,16 @@
+Chương 1: Giới thiệu về một số khái niệm trong Python
+1.1. Giới thiệu ngôn ngữ lập trình Python
+1.2. Cấu trúc chương trình Python cơ bản
+1.3. Biến và kiểu dữ liệu trong Python
+1.4. Câu lệnh điều kiện và vòng lặp
+1.5. Hàm và phạm vi biến
+1.6. Danh sách, tuple, set và dictionary
+1.7. Làm việc với tệp tin (File I/O)
+1.8. Lập trình hướng đối tượng trong Python
+Chương 2: Giới thiệu và mô tả đề tài
+2.1. Mục tiêu và phạm vi của đề tài
+2.2. Yêu cầu chức năng của chương trình
+2.3. Phân tích đối tượng và luồng xử lý dữ liệu
+2.4. Thiết kế sơ bộ giao diện người dùng
+2.5. Công cụ và môi trường phát triển được sử dụng
+2.6. Hướng tiếp cận và phương pháp triển khai

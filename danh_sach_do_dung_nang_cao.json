@@ -1,0 +1,37 @@
+{
+    "Bàn học": {
+        "thoi_gian_mua": "01/01/2025",
+        "thoi_gian_bao_hanh": "12 tháng",
+        "gia_mua": 120.0,
+        "gia_ban": 200.0,
+        "so_luong": 1
+    },
+    "Ghế xoay": {
+        "thoi_gian_mua": "15/02/2025",
+        "thoi_gian_bao_hanh": "24 tháng",
+        "gia_mua": 80.0,
+        "gia_ban": 130.0,
+        "so_luong": 5
+    },
+    "Tủ sách": {
+        "thoi_gian_mua": "10/03/2025",
+        "thoi_gian_bao_hanh": "36 tháng",
+        "gia_mua": 150.0,
+        "gia_ban": 250.0,
+        "so_luong": 2
+    },
+    "Đèn bàn": {
+        "thoi_gian_mua": "20/04/2025",
+        "thoi_gian_bao_hanh": "18 tháng",
+        "gia_mua": 25.0,
+        "gia_ban": 45.0,
+        "so_luong": 10
+    },
+    "Laptop": {
+        "thoi_gian_mua": "05/05/2025",
+        "thoi_gian_bao_hanh": "24 tháng",
+        "gia_mua": 1000.0,
+        "gia_ban": 1200.0,
+        "so_luong": 1
+    }
+}
