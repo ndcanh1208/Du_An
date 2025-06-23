@@ -291,15 +291,17 @@ def them_do_dung_ban_nang_cao():
         print(f"Thêm đồ dùng thứ {i + 1}")
         ten_do_dung = input("Nhập tên đồ dùng: ")
         if ten_do_dung in danh_sach_do_dung_ban_nang_cao:
+            print("=" * 40)
             print(f"Đồ dùng {ten_do_dung} đã tồn tại trong danh sách.")
             print("1. Tăng số lượng ")
             print(f"2. Ghi đè thông tin của {ten_do_dung}")
-            print("3. Bỏ qua")
+            print("3. Bỏ thêm đồ dùng này")
             lua_chon = int(input("Nhập lựa chọn của bạn: "))
             while lua_chon != 1 or lua_chon != 2 or lua_chon != 3:
                 if lua_chon == 1:
                     so_luong_tang = int(input("Nhập số lượng đồ dùng muốn tăng: "))
                     danh_sach_do_dung_ban_nang_cao[ten_do_dung]["so_luong"] += so_luong_tang
+                    print("=" * 40)
                     luu_danh_sach_do_dung_ban_nang_cao_vao_file()
                 elif lua_chon == 2:
                     thoi_gian_mua = input("Nhập thời gian mua đồ dùng (dd/mm/yyyy): ")
@@ -315,23 +317,49 @@ def them_do_dung_ban_nang_cao():
                         while len(thoi_gian_mua) >= 10 and (int(thoi_gian_mua[3] + thoi_gian_mua[4])) > 12 and int(thoi_gian_mua[3] + thoi_gian_mua[4]) < 1:
                             print("Tháng không hợp lệ. Vui lòng nhập lại.")
                             thoi_gian_mua = input("Nhập lại thời gian mua đồ dùng (dd/mm/yyyy): ")
-        thoi_gian_mua = input("Nhập thời gian mua đồ dùng (dd/mm/yyyy): ")
-        if len(thoi_gian_mua) != 10:
-            while len(thoi_gian_mua) != 10:
-                print("Nhập sai định dạng thời gian mua. Vui lòng nhập lại theo định dạng dd/mm/yyyy.")
-                thoi_gian_mua = input("Nhập lại thời gian mua đồ dùng (dd/mm/yyyy): ")
-        if len(thoi_gian_mua) >= 10 and int(thoi_gian_mua[0] + thoi_gian_mua[1]) > 31 or int(thoi_gian_mua[0] + thoi_gian_mua[1]) < 1:
-            while len(thoi_gian_mua) >= 10 and (int(thoi_gian_mua[0] + thoi_gian_mua[1])) > 31 and int(thoi_gian_mua[0] + thoi_gian_mua[1] < 1):
-                print("Ngày không hợp lệ. Vui lòng nhập lại.")
-                thoi_gian_mua = input("Nhập lại thời gian mua đồ dùng (dd/mm/yyyy): ")
-        if len(thoi_gian_mua) >= 10 and int(thoi_gian_mua[3] + thoi_gian_mua[4]) > 12 or int(thoi_gian_mua[3] + thoi_gian_mua[4]) < 1:
-            while len(thoi_gian_mua) >= 10 and (int(thoi_gian_mua[3] + thoi_gian_mua[4])) > 12 and int(thoi_gian_mua[3] + thoi_gian_mua[4]) < 1:
-                print("Tháng không hợp lệ. Vui lòng nhập lại.")
-                thoi_gian_mua = input("Nhập lại thời gian mua đồ dùng (dd/mm/yyyy): ")
-        thoi_gian_bao_hanh = input("Nhập thời gian bảo hành (tháng): ")
-        gia_mua = float(input("Nhập giá mua đồ dùng (nghìn VND): "))
-        gia_ban = float(input("Nhập giá bán đồ dùng (nghìn VND): "))
-        so_luong = int(input("Nhập số lượng đồ dùng: "))
+                    thoi_gian_bao_hanh = int(input("Nhập thời gian bảo hành (tháng): "))
+                    gia_mua = float(input("Nhập giá mua đồ dùng (nghìn VND): "))
+                    gia_ban = float(input("Nhập giá bán đồ dùng (nghìn VND): "))
+                    so_luong = int(input("Nhập số lượng đồ dùng: "))
+                    danh_sach_do_dung_ban_nang_cao[ten_do_dung] = {
+                        "thoi_gian_mua": thoi_gian_mua,
+                        "thoi_gian_bao_hanh": thoi_gian_bao_hanh,
+                        "gia_mua": gia_mua,
+                        "gia_ban": gia_ban,
+                        "so_luong": so_luong
+                    }
+                    print("=" * 40)
+                    luu_danh_sach_do_dung_ban_nang_cao_vao_file()
+                elif lua_chon == 3:
+                    print("Bỏ thêm đồ dùng này")
+                    print("=" * 40)
+                    break
+                else:
+                    print("Lựa chọn không hợp lệ. Vui lòng chọn lại.")
+                    print("=" * 40)
+                    print(f"Đồ dùng {ten_do_dung} đã tồn tại trong danh sách.")
+                    print("1. Tăng số lượng ")
+                    print(f"2. Ghi đè thông tin của {ten_do_dung}")
+                    print("3. Bỏ thêm đồ dùng này")
+                    lua_chon = int(input("Nhập lựa chọn của bạn: "))
+        else:
+            thoi_gian_mua = input("Nhập thời gian mua đồ dùng (dd/mm/yyyy): ")
+            if len(thoi_gian_mua) != 10:
+                while len(thoi_gian_mua) != 10:
+                    print("Nhập sai định dạng thời gian mua. Vui lòng nhập lại theo định dạng dd/mm/yyyy.")
+                    thoi_gian_mua = input("Nhập lại thời gian mua đồ dùng (dd/mm/yyyy): ")
+            if len(thoi_gian_mua) >= 10 and int(thoi_gian_mua[0] + thoi_gian_mua[1]) > 31 or int(thoi_gian_mua[0] + thoi_gian_mua[1]) < 1:
+                while len(thoi_gian_mua) >= 10 and (int(thoi_gian_mua[0] + thoi_gian_mua[1])) > 31 and int(thoi_gian_mua[0] + thoi_gian_mua[1] < 1):
+                    print("Ngày không hợp lệ. Vui lòng nhập lại.")
+                    thoi_gian_mua = input("Nhập lại thời gian mua đồ dùng (dd/mm/yyyy): ")
+            if len(thoi_gian_mua) >= 10 and int(thoi_gian_mua[3] + thoi_gian_mua[4]) > 12 or int(thoi_gian_mua[3] + thoi_gian_mua[4]) < 1:
+                while len(thoi_gian_mua) >= 10 and (int(thoi_gian_mua[3] + thoi_gian_mua[4])) > 12 and int(thoi_gian_mua[3] + thoi_gian_mua[4]) < 1:
+                    print("Tháng không hợp lệ. Vui lòng nhập lại.")
+                    thoi_gian_mua = input("Nhập lại thời gian mua đồ dùng (dd/mm/yyyy): ")
+            thoi_gian_bao_hanh = int(input("Nhập thời gian bảo hành (tháng): "))
+            gia_mua = float(input("Nhập giá mua đồ dùng (nghìn VND): "))
+            gia_ban = float(input("Nhập giá bán đồ dùng (nghìn VND): "))
+            so_luong = int(input("Nhập số lượng đồ dùng: "))
 
 def tim_ghi_chu_dai_nhat_ban_nang_cao():
     doc_danh_sach_do_dung_ban_nang_cao_tu_file()
@@ -354,9 +382,9 @@ def hien_thi_danh_sach_do_dung_ban_nang_cao():
         for ten_do_dung, thong_tin in danh_sach_do_dung_ban_nang_cao.items():
             print("=" * (139 + khoang_cach))
             if "ghi_chu" not in thong_tin:
-                print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (18 - len(thong_tin["thoi_gian_bao_hanh"]))}{thong_tin["thoi_gian_bao_hanh"]}|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{" " * ( 7 + khoang_cach)}|")
+                print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (12 - len(str(thong_tin["thoi_gian_bao_hanh"])))}{thong_tin["thoi_gian_bao_hanh"]} tháng|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{" " * ( 7 + khoang_cach)}|")
             else:
-                print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (18 - len(thong_tin["thoi_gian_bao_hanh"]))}{thong_tin["thoi_gian_bao_hanh"]}|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{thong_tin["ghi_chu"]}{" " * 7}|")
+                print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (12 - len(str(thong_tin["thoi_gian_bao_hanh"])))}{thong_tin["thoi_gian_bao_hanh"]} tháng|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{thong_tin["ghi_chu"]}{" " * 7}|")
             i = i + 1
         print("=" * (139 + khoang_cach))
 
@@ -378,9 +406,9 @@ def tim_kiem_do_dung_ban_nang_cao(lua_chon):
             print("=" * (139 + khoang_cach))
             for ten, thong_tin in ket_qua.items():
                 if "ghi_chu" not in thong_tin:
-                    print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (18 - len(thong_tin["thoi_gian_bao_hanh"]))}{thong_tin["thoi_gian_bao_hanh"]}|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{" " * ( 7 + khoang_cach)}|")
+                    print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (12 - len(str(thong_tin["thoi_gian_bao_hanh"])))}{thong_tin["thoi_gian_bao_hanh"]} tháng|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{" " * ( 7 + khoang_cach)}|")
                 else:
-                    print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (18 - len(thong_tin["thoi_gian_bao_hanh"]))}{thong_tin["thoi_gian_bao_hanh"]}|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{thong_tin["ghi_chu"]}{" " * 7}|")
+                    print(f"|{" " * (3 - len(str(i)))}{i}|{" " * (50 - len(ten_do_dung))}{ten_do_dung}|{" " * 6}{thong_tin["thoi_gian_mua"]}|{" " * (12 - len(str(thong_tin["thoi_gian_bao_hanh"])))}{thong_tin["thoi_gian_bao_hanh"]} tháng|{" " * (12 - len(str(thong_tin["gia_mua"])))}{thong_tin["gia_mua"]:.3f}|{" " * (12 - len(str(thong_tin["gia_ban"])))}{thong_tin["gia_ban"]:.3f}|{" " * (8 - len(str(thong_tin["so_luong"])))}{thong_tin["so_luong"]}|{thong_tin["ghi_chu"]}{" " * 7}|")
                 i = i + 1
             print("=" * (139 + khoang_cach))
 
@@ -431,6 +459,7 @@ def ban_nang_cao():
             print("Thoát về menu chính")
             break
 
+# Hàm chính
 if __name__ == "__main__":
     doc_file_du_lieu_nguoi_dung()
     print(f"{"=" * 40}")
