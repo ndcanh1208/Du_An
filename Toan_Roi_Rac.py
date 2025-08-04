@@ -62,6 +62,23 @@ print(a or b)   # True
 # print(x != 0 and (10 / x) > 1)  # Điều kiện đầu tiên sai, điều kiện sau không bị kiểm tra
 # → Giải thích vì sao chương trình không lỗi.
 # => Chương trình không lỗi vì điều kiện đầu luôn sai và điều kiện sau không được kiểm tra
+# 1.3.2.1. Kiểu set – tập hợp không thứ tự
+#Thay 2 * x bằng 2 * x + 1. Tập S mới đại diện cho tập gì?
+S = {2*x+1 for x in range(10)}  # tập các số chẵn từ 0 đến 18
+ 
+# Các phép toán
+print(S) # tập các số lẻ từ 1 đến 19
+print(len(S)) # 10 phần tử lẻ khác nhau, không có kq trùng nhau
+A = {1, 2, 3}
+B = {2, 3, 4}
+
+A.add(5)
+print("A sau khi thêm 5:", A) # thêm phần tử 5 vào A sẽ là: A = {1,2,3,5}
+print("A union B:", A.union(B)) # hợp cả A và B và loại kq trùng: {1,2,3,4,5}
+print(A.union(B))        # {1, 2, 3, 4}
+print(A.intersection(B)) # {2, 3}
+print(A - B)             # {1}
+print(B - A)             # {4} B - A là các phần tử có trong B nhưng không có trong A → {4}
 # 1.3.2.2. Kiểm tra thuộc tính tập hợp
 # Thêm C và C là tập con của      
 A = {1, 2, 3}
